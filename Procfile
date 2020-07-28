@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run TOM.py
+web: sh setup.sh && streamlit run tom-my.py
