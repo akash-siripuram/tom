@@ -23,19 +23,35 @@ if a is None or b is None or c is None:
 else:
 	c_type=st.selectbox("Cluster Type",["Automatic","Manual"])
 	if c_type=="Automatic":
-		if st.button("Get Result"):	
-			with st.spinner('In Progress...'):
-				for i in range(2,21):
-					kmeans = KMeans(n_clusters=i, random_state=0).fit(d)
-					a=kmeans.predict([[a,b,c]])
-					if a[0]%2!=0:
-						g=g+1
+		stat=st.selectbox("Select EVEN or ODD 2nd digit ",['EVEN','ODD'])
+		if stat=="EVEN":
+			if st.button("Get Result"):	
+				with st.spinner('In Progress...'):
+					for i in range(2,11):
+						kmeans = KMeans(n_clusters=i, random_state=0).fit(d)
+						a=kmeans.predict([[a,b,c]])
+						if a[0]%2==0:
+							g=g+1
+						else:
+							r=r+1
+					if g>r:
+						st.success("Next is green {}%".format((round(g/11)*100)))
 					else:
-						r=r+1
-				if g>r:
-					st.success("Next is green {}%".format((round(g/21)*100)))
-				else:
-					st.error("Next is Red {}".format(round((r/21)*100)))		
+						st.error("Next is Red {}".format(round((r/11)*100)))
+		elif stat=="ODD":
+			if st.button("Get Result"):	
+				with st.spinner('In Progress...'):
+					for i in range(2,11):
+						kmeans = KMeans(n_clusters=i, random_state=0).fit(d)
+						a=kmeans.predict([[a,b,c]])
+						if a[0]%2!=0:
+							g=g+1
+						else:
+							r=r+1
+					if g>r:
+						st.success("Next is green {}%".format((round(g/11)*100)))
+					else:
+						st.error("Next is Red {}".format(round((r/11)*100)))						
 	elif c_type=="Manual":
 		c_size=st.selectbox("Select the cluster size",[2,3,5,7,9])
 		if st.button("Get Manual Cluster"):
@@ -45,25 +61,3 @@ else:
 				st.success("Next is green {}".format(g))
 			else:
 				st.error("Next is Red {}".format(r))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
