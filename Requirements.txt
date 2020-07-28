@@ -2,4 +2,4 @@ streamlit
 sqlite3
 pandas
 numpy
-sklearn
+scikit-learn==0.22.1
