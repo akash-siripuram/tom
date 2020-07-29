@@ -32,7 +32,6 @@ if a is None or b is None or c is None:
 else:
 	s_type=st.selectbox("Type",["Classification","Clustering"])
 	if s_type =="Classification":
-		ss=st.selectbox("Class",('A','B'))
 		if st.button("Classify"):
 			with st.spinner('In Progress...'):
 				clf = svm.SVC()
