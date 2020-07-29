@@ -27,12 +27,20 @@ if a is None or b is None or c is None:
 else:
 	s_type=st.selectbox("Type",["Classification","Clustering"])
 	if s_type =="Classification":
+		ss=st.selectbox("Class",('A','B'))
 		if st.button("Classify"):
 			with st.spinner('In Progress...'):
 				clf = svm.SVC()
 				clf.fit(X_train,y_train)
-				p=clf.predict([[a,b,c]])
-				if p==0:
-					st.error("Next is RED")
-				elif p==1:
-					st.success("Next is GREEN")
+				if ss=="A":
+					p=clf.predict([[a,b,c]])
+					if p==0:
+						st.error("Next is RED")
+					elif p==1:
+						st.success("Next is GREEN")
+				elif ss=="B":
+					p=clf.predict([[a,b,c]])
+					if p==0:
+						st.error("Next is RED")
+					elif p==1:
+						st.success("Next is GREEN")
