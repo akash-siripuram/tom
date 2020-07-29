@@ -102,4 +102,38 @@ else:
 						st.error("Next is GREEN")
 					elif p==1:
 						st.success("Next is RED")
-'''					
+st.subheader("This is under operation")			
+		if st.button("Check Violet"):
+				with st.spinner('In Progress...'):
+					clf = svm.SVC()
+					d=pd.read_excel("violet.xlsx")
+					#st.write("The shape is ",d.shape)
+					d1=d[:4571]
+					d2=d[4571:9142]
+					d3=d[9142:13713]
+					d4=d[13713:18284]
+					d5=d[18284:22855]
+					d6=d[22855:27426]
+					d7=d[27426:]
+					lis=[d1,d2,d3,d4,d5,d6,d7]
+					v,o=0,0
+					for i in lis:
+						X=i[['A','B','C']]
+						y=i['Y']
+						X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
+						#st.write("The shape is ",d.shape)
+						clf.fit(X_train,y_train)
+						p=clf.predict([[a,b,c]])
+						if p==0:
+							o=o+1
+							st.write("Other",j)
+							j=j+1
+						elif p==1:
+							v=v+1
+							st.write("Violet",j)
+							j=j+1
+					if v>o:
+						st.error("Next is Violet {}".format((v/7)*100))
+					else:
+						st.success("Next is Other Color {}".format((o/7)*100))
+'''						
