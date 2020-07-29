@@ -41,6 +41,6 @@ else:
 				elif ss=="B":
 					p=clf.predict([[a,b,c]])
 					if p==0:
-						st.error("Next is RED")
+						st.error("Next is GREEN")
 					elif p==1:
-						st.success("Next is GREEN")
+						st.success("Next is RED")
