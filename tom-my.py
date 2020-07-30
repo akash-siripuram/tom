@@ -30,8 +30,8 @@ j=1
 if a is None or b is None or c is None:
 		st.print("")
 else:
-	s_type=st.selectbox("Type",["Classification","Clustering"])
-	if s_type =="Classification":
+	s_type=st.selectbox("Type",["Normal","Reverse"])
+	if s_type =="Normal":
 		if st.button("Classify"):
 			with st.spinner('In Progress...'):
 				clf = svm.SVC()
@@ -54,3 +54,26 @@ else:
 					st.error("Next is RED {}".format((r/7)*100))
 				else:
 					st.success("Next is GREEN {}".format((g/7)*100))
+	elif s_type=="Reverse":
+		if st.button("Classify"):
+				with st.spinner('In Progress...'):
+					clf = svm.SVC()
+					for i in lis:
+						X=i[['A','B','C']]
+						y=i['Y']
+						X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
+						#st.write("The shape is ",d.shape)
+						clf.fit(X_train,y_train)
+						p=clf.predict([[a,b,c]])
+						if p==0:
+							g=g+1
+							st.write("GREEN",j)
+							j=j+1
+						elif p==1:
+							r=r+1
+							st.write("RED",j)
+							j=j+1
+					if r>g:
+						st.error("Next is RED {}".format((r/7)*100))
+					else:
+						st.success("Next is GREEN {}".format((g/7)*100))				
