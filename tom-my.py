@@ -44,16 +44,48 @@ else:
 					p=clf.predict([[a,b,c]])
 					if p==0:
 						r=r+1
-						st.write("RED",j)
+						#st.write("RED",j)
 						j=j+1
 					elif p==1:
 						g=g+1
-						st.write("GREEN",j)
+						#st.write("GREEN",j)
 						j=j+1
 				if r>g:
 					st.error("Next is RED {}".format((r/7)*100))
 				else:
 					st.success("Next is GREEN {}".format((g/7)*100))
+				with st.spinner('Checking Violet In Progress...'):
+					clf = svm.SVC()
+					d=pd.read_excel("violet.xlsx")
+					#st.write("The shape is ",d.shape)
+					d1=d[:1857]
+					d2=d[1857:3714]
+					d3=d[3714:5571]
+					d4=d[5571:7428]
+					d5=d[7428:9285]
+					d6=d[9285:11142]
+					d7=d[11142:]
+					lis=[d1,d2,d3,d4,d5,d6,d7]
+					v,o=0,0
+					for i in lis:
+						X=i[['A','B','C']]
+						y=i['Y']
+						X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
+						#st.write("The shape is ",d.shape)
+						clf.fit(X_train,y_train)
+						p=clf.predict([[a,b,c]])
+						if p==0:
+							o=o+1
+							#st.write("Other",j)
+							j=j+1
+						elif p==1:
+							v=v+1
+							#st.write("Violet",j)
+							j=j+1
+					if v>o:
+						st.success("Next is Violet {}".format((v/7)*100))
+					else:
+						st.warning("Next is Other Color {}".format((o/7)*100))	
 	elif s_type=="Reverse":
 		if st.button("Classify"):
 				with st.spinner('In Progress...'):
@@ -67,13 +99,45 @@ else:
 						p=clf.predict([[a,b,c]])
 						if p==0:
 							g=g+1
-							st.write("GREEN",j)
+							#st.write("GREEN",j)
 							j=j+1
 						elif p==1:
 							r=r+1
-							st.write("RED",j)
+							#st.write("RED",j)
 							j=j+1
 					if r>g:
 						st.error("Next is RED {}".format((r/7)*100))
 					else:
-						st.success("Next is GREEN {}".format((g/7)*100))				
+						st.success("Next is GREEN {}".format((g/7)*100))	
+					with st.spinner('Checking Violet In Progress...'):
+						clf = svm.SVC()
+						d=pd.read_excel("violet.xlsx")
+						st.write("The shape is ",d.shape)
+						d1=d[:1857]
+						d2=d[1857:3714]
+						d3=d[3714:5571]
+						d4=d[5571:7428]
+						d5=d[7428:9285]
+						d6=d[9285:11142]
+						d7=d[11142:]
+						lis=[d1,d2,d3,d4,d5,d6,d7]
+						v,o=0,0
+						for i in lis:
+							X=i[['A','B','C']]
+							y=i['Y']
+							X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
+							#st.write("The shape is ",d.shape)
+							clf.fit(X_train,y_train)
+							p=clf.predict([[a,b,c]])
+							if p==0:
+								o=o+1
+								#st.write("Other",j)
+								j=j+1
+							elif p==1:
+								v=v+1
+								#st.write("Violet",j)
+								j=j+1
+						if v>o:
+							st.success("Next is Violet {}".format((v/7)*100))
+						else:
+							st.warning("Next is Other Color {}".format((o/7)*100))				
