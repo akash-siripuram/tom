@@ -22,7 +22,7 @@ g,r=0,0
 p=-1
 j=1
 if a is None or b is None:
-		st.print("")
+	st.print("")
 else:
 	
 	if s_type=="Emerd":
