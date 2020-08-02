@@ -11,33 +11,35 @@ import sklearn
 
 
 
-s_type=st.selectbox("Type",["Parity","Sapre","Bcone","Emerd"])
+s_type=st.selectbox("Type",["Emerd"])
 #st.write("The shape is ",d.shape)
 #cl=st.selectbox("Select the number of clusters",[2,3,4,5,6,7,8,9,10])
 a=st.number_input("Enter the Last Period last digit",value=2,step=1)
 b=st.number_input("Enter the Last Price last digit",value=2,step=1)
 #c=st.number_input("Enter the Next Period last digit(You want to predict)",value=2,step=1)
 g,r=0,0
-#st.write(int(bin(a)[2:])%2)
+
 p=-1
 j=1
 if a is None or b is None:
 		st.print("")
 else:
+	
 	if s_type=="Emerd":
 		if st.button("Classify"):
 			with st.spinner('In Progress...'):
-				d=pd.read_excel("lat.xlsx")
+				d=pd.read_excel("Emerd.xlsx")
 				clf = svm.SVC()
 				#clf = DecisionTreeClassifier(random_state=0)
-				X=d[['A','B','C']]
-				y=d['Y']
-				X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.05)
+				X=d[['A','B','C']][:10000]
+				y=d['Y'][:10000]
+				X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3)
 				#st.write("The shape is ",d.shape)
 				clf.fit(X_train,y_train)
 				st.write("You selected ",s_type)
-				p=clf.predict([[a%2,b%2,(a+1)%2]])
+				p=clf.predict([[a,b,a+1]])
 				if p==0:
 					st.error("Next is RED")
 				elif p==1:
-					st.success("Next is GREEN")
+					st.success("Next is GREEN")							
+
