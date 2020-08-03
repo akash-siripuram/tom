@@ -22,18 +22,18 @@ g,r=0,0
 p=-1
 j=1
 if a is None or b is None:
-	st.print("")
+		st.print("")
 else:
 	
 	if s_type=="Emerd":
 		if st.button("Classify"):
 			with st.spinner('In Progress...'):
-				d=pd.read_excel("Emerd.xlsx")
+				d=pd.read_excel("Emerd_n.xlsx")
 				clf = svm.SVC()
 				#clf = DecisionTreeClassifier(random_state=0)
-				X=d[['A','B','C']][:10000]
-				y=d['Y'][:10000]
-				X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3)
+				X=d[['A','B','C']]
+				y=d['Y']
+				X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.05)
 				#st.write("The shape is ",d.shape)
 				clf.fit(X_train,y_train)
 				st.write("You selected ",s_type)
@@ -41,5 +41,4 @@ else:
 				if p==0:
 					st.error("Next is RED")
 				elif p==1:
-					st.success("Next is GREEN")							
-
+					st.success("Next is GREEN")	
