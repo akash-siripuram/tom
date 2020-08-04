@@ -36,10 +36,9 @@ else:
 				X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.001)
 
 				#st.write("The shape is ",d.shape)
+				clf.fit(X_train,y_train)
+				st.write("You selected ",s_type)
 				for i in range(0,5):
-					clf.fit(X_train,y_train)
-					st.write("You selected ",s_type)
-
 					p=clf.predict([[a,b,a+1]])
 					if p==0:
 						r=r+1
@@ -48,7 +47,7 @@ else:
 						g=g+1
 						#st.success("Next is GREEN")							
 				if g>r:
-					st.success("Next is GREEN - {} %".format((g/5)*100))
+					st.success("Next is GREEN")
 				elif r>g:
-					st.error("Next is RED - {} %".format((r/5)*100))
+					st.error("Next is RED")
 
