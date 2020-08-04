@@ -33,7 +33,7 @@ else:
 				#clf = DecisionTreeClassifier(random_state=0)
 				for i in range(0,5):
 					X=d[['A','B','C']]
-					y=d['Y']
+					y=d['D']
 					X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.001)
 
 					#st.write("The shape is ",d.shape)
