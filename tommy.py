@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 import sklearn
 from sklearn.ensemble import AdaBoostClassifier
-a_type=st.selectbox("Type",["ADABOOST [Recommended]","SVM","DT"])
+a_type=st.selectbox("Type",["DT","ADABOOST [Recommended]","SVM"])
 #st.write("The shape is ",d.shape)
 #cl=st.selectbox("Select the number of clusters",[2,3,4,5,6,7,8,9,10])
 a=st.number_input("Enter the Last Period last digit",value=2,step=1)
