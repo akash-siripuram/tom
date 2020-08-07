@@ -1,3 +1,4 @@
+
 import streamlit as st
 import numpy as np
 from sklearn import preprocessing
@@ -18,15 +19,15 @@ g,r=0,0
 
 p=-1
 j=1
-
+rr=st.radio("Select the cell",("1","2","3","4"))
 if a_type=="LR":
-	if st.checkbox("1",):
-		a=st.number_input("Enter the Last fist color",value=2,step=1)
-		b=st.number_input("Enter the Last second",value=2,step=1)
-		c=st.number_input("Enter the last third color",value=2,step=1)
-		e=st.number_input("Enter the last four color",value=2,step=1)
-		if st.button("Classify"):
-			with st.spinner('In Progress...'):
+	if rr=="1":
+		a=st.number_input("Enter the Last fist color",value=1,step=1)
+		b=st.number_input("Enter the Last second",value=1,step=1)
+		c=st.number_input("Enter the last third color",value=1,step=1)
+		e=st.number_input("Enter the last four color",value=1,step=1)
+		if st.button("Predict 1st"):
+			with st.spinner('In Progress.'):
 				d=pd.read_excel("rd5.xlsx")
 				#clf = svm.SVC(kernel="")
 				#clf = DecisionTreeClassifier(random_state=0)
@@ -39,20 +40,21 @@ if a_type=="LR":
 				#st.write("You selected ",s_type)
 
 				p=clf.predict([[a,b,c,e]])
-				if p==0:
+				st.write(p)
+				if p%2==0:
 					#r=r+1
-					st.success("Next is GREEN")
-				elif p==1:
+					st.error("Next is RED".format(p))
+				else:
 					#g=g+1
-					st.error("Next is RED")
-	if st.checkbox("2"):
+					st.success("Next is GREEN".format(p))
+	if rr=="2":
 		a=st.number_input("Enter the Last fist color",value=2,step=1)
 		b=st.number_input("Enter the Last second",value=2,step=1)
 		c=st.number_input("Enter the last third color",value=2,step=1)
 		e=st.number_input("Enter the last fourth color",value=2,step=1)
 		f=st.number_input("Enter the last fifth color",value=2,step=1)
-		if st.button("Classify"):
-			with st.spinner('In Progress...'):
+		if st.button("Predict 2nd"):
+			with st.spinner('In Progress.....'):
 				d=pd.read_excel("rd6.xlsx")
 				#clf = svm.SVC(kernel="")
 				#clf = DecisionTreeClassifier(random_state=0)
@@ -65,17 +67,17 @@ if a_type=="LR":
 				#st.write("You selected ",s_type)
 
 				p=clf.predict([[a,b,c,e,f]])
-				if p==0:
+				if p%2==0:
 					#r=r+1
-					st.success("Next is GREEN")
-				elif p==1:
+					st.error("Next is RED".format(p))
+				else:
 					#g=g+1
-					st.error("Next is RED")
-	if st.checkbox("3"):
+					st.success("Next is GREEN".format(p))
+	if rr== "3":
 		a=st.number_input("Enter the Last fist color",value=2,step=1)
 		b=st.number_input("Enter the Last second",value=2,step=1)
-		if st.button("Classify"):
-			with st.spinner('In Progress...'):
+		if st.button("Predict 3rd"):
+			with st.spinner('In Progress....'):
 				d=pd.read_excel("rd3.xlsx")
 				#clf = svm.SVC(kernel="")
 				#clf = DecisionTreeClassifier(random_state=0)
@@ -88,18 +90,19 @@ if a_type=="LR":
 				#st.write("You selected ",s_type)
 
 				p=clf.predict([[a,b]])
-				if p==0:
+				if p%2==0:
 					#r=r+1
-					st.success("Next is GREEN")
-				elif p==1:
+					st.error("Next is RED".format(p))
+				else:
 					#g=g+1
-					st.error("Next is RED")
-	if st.checkbox("4"):	
+					st.success("Next is GREEN".format(p))
+					
+	if rr=="4":	
 		a=st.number_input("Enter the Last fist color",value=2,step=1)
 		b=st.number_input("Enter the Last second",value=2,step=1)
 		c=st.number_input("Enter the last third color",value=2,step=1)
-		if st.button("Classify"):
-			with st.spinner('In Progress...'):
+		if st.button("Predict 4th"):
+			with st.spinner('In Progress..'):
 				d=pd.read_excel("rd4.xlsx")
 				#clf = svm.SVC(kernel="")
 				#clf = DecisionTreeClassifier(random_state=0)
@@ -112,12 +115,12 @@ if a_type=="LR":
 				#st.write("You selected ",s_type)
 
 				p=clf.predict([[a,b,c]])
-				if p==0:
+				if p%2==0:
 					#r=r+1
-					st.success("Next is GREEN")
-				elif p==1:
+					st.error("Next is RED".format(p))
+				else:
 					#g=g+1
-					st.error("Next is RED")							
+					st.success("Next is GREEN".format(p))						
 				#if g>r:
 					#st.success("Next is GREEN - {} %".format((g/5)*100))
 				#else:
@@ -207,5 +210,5 @@ elif a_type=="DT":
 			#else:
 				#st.error("Next is RED - {} %".format((r/5)*100))
 
-		
+
 
