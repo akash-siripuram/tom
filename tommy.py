@@ -20,7 +20,7 @@ p=-1
 j=1
 
 if a_type=="LR":
-	if st.checkbox("Type","1"):
+	if st.checkbox("1",):
 		a=st.number_input("Enter the Last fist color",value=2,step=1)
 		b=st.number_input("Enter the Last second",value=2,step=1)
 		c=st.number_input("Enter the last third color",value=2,step=1)
@@ -45,7 +45,7 @@ if a_type=="LR":
 				elif p==1:
 					#g=g+1
 					st.error("Next is RED")
-	if st.checkbox("Type","2"):
+	if st.checkbox("2"):
 		a=st.number_input("Enter the Last fist color",value=2,step=1)
 		b=st.number_input("Enter the Last second",value=2,step=1)
 		c=st.number_input("Enter the last third color",value=2,step=1)
@@ -71,7 +71,7 @@ if a_type=="LR":
 				elif p==1:
 					#g=g+1
 					st.error("Next is RED")
-	if st.checkbox("Type","3"):
+	if st.checkbox("3"):
 		a=st.number_input("Enter the Last fist color",value=2,step=1)
 		b=st.number_input("Enter the Last second",value=2,step=1)
 		if st.button("Classify"):
@@ -94,7 +94,7 @@ if a_type=="LR":
 				elif p==1:
 					#g=g+1
 					st.error("Next is RED")
-	if st.checkbox("Type","4"):	
+	if st.checkbox("4"):	
 		a=st.number_input("Enter the Last fist color",value=2,step=1)
 		b=st.number_input("Enter the Last second",value=2,step=1)
 		c=st.number_input("Enter the last third color",value=2,step=1)
