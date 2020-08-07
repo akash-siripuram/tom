@@ -24,7 +24,7 @@ if a_type=="LR":
 		a=st.number_input("Enter the Last fist color",value=2,step=1)
 		b=st.number_input("Enter the Last second",value=2,step=1)
 		c=st.number_input("Enter the last third color",value=2,step=1)
-		e=st.number_input("Enter the last third color",value=2,step=1)
+		e=st.number_input("Enter the last four color",value=2,step=1)
 		if st.button("Classify"):
 			with st.spinner('In Progress...'):
 				d=pd.read_excel("rd5.xlsx")
