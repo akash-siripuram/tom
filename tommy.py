@@ -43,10 +43,10 @@ if a_type=="LR":
 				st.write(p)
 				if p%2==0:
 					#r=r+1
-					st.error("Next is RED".format(p))
+					st.error("Next is RED {}".format(1-clf.predict_proba([[a,b,c,e]])))
 				else:
 					#g=g+1
-					st.success("Next is GREEN".format(p))
+					st.success("Next is GREEN".format(1-clf.predict_proba([[a,b,c,e]])))
 	if rr=="2":
 		a=st.number_input("Enter the Last fist color",value=1,step=1)
 		b=st.number_input("Enter the Last second",value=1,step=1)
