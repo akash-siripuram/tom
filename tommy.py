@@ -40,13 +40,14 @@ if a_type=="LR":
 				#st.write("You selected ",s_type)
 
 				p=clf.predict([[a,b,c,e]])
-				st.write(p)
+				#st.write(p)
 				if p%2==0:
 					#r=r+1
-					st.error("Next is RED {}".format(1-clf.predict_proba([[a,b,c,e]])))
-				else:
-					#g=g+1
 					st.success("Next is GREEN".format(1-clf.predict_proba([[a,b,c,e]])))
+				elif p%2==1:
+					#g=g+1
+					st.error("Next is RED {}".format(1-clf.predict_proba([[a,b,c,e]])))
+					
 	if rr=="2":
 		a=st.number_input("Enter the Last fist color",value=1,step=1)
 		b=st.number_input("Enter the Last second",value=1,step=1)
