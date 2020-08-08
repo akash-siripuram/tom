@@ -43,10 +43,10 @@ if a_type=="LR":
 				#st.write(p)
 				if p%2==0:
 					#r=r+1
-					st.success("Next is GREEN".format(1-clf.predict_proba([[a,b,c,e]])))
+					st.success("Next is GREEN")
 				elif p%2==1:
 					#g=g+1
-					st.error("Next is RED {}".format(1-clf.predict_proba([[a,b,c,e]])))
+					st.error("Next is RED")
 					
 	if rr=="2":
 		a=st.number_input("Enter the Last fist color",value=1,step=1)
@@ -70,10 +70,10 @@ if a_type=="LR":
 				p=clf.predict([[a,b,c,e,f]])
 				if p%2==0:
 					#r=r+1
-					st.error("Next is RED".format(p))
-				else:
+					st.success("Next is GREEN")
+				elif p%2==1:
 					#g=g+1
-					st.success("Next is GREEN".format(p))
+					st.error("Next is RED")
 	if rr== "3":
 		a=st.number_input("Enter the Last fist color",value=1,step=1)
 		b=st.number_input("Enter the Last second",value=1,step=1)
@@ -93,10 +93,10 @@ if a_type=="LR":
 				p=clf.predict([[a,b]])
 				if p%2==0:
 					#r=r+1
-					st.error("Next is RED".format(p))
-				else:
+					st.success("Next is GREEN")
+				elif p%2==1:
 					#g=g+1
-					st.success("Next is GREEN".format(p))
+					st.error("Next is RED")
 					
 	if rr=="4":	
 		a=st.number_input("Enter the Last fist color",value=1,step=1)
@@ -118,10 +118,10 @@ if a_type=="LR":
 				p=clf.predict([[a,b,c]])
 				if p%2==0:
 					#r=r+1
-					st.error("Next is RED".format(p))
-				else:
+					st.success("Next is GREEN")
+				elif p%2==1:
 					#g=g+1
-					st.success("Next is GREEN".format(p))						
+					st.error("Next is RED")					
 				#if g>r:
 					#st.success("Next is GREEN - {} %".format((g/5)*100))
 				#else:
