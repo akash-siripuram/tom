@@ -29,9 +29,9 @@ if a_type=="LR":
 		for match in matches:
 			st.write(match)
 			if (match['mchstate'] != "nextlive"):
-				  st.write(c.livescore(match['id'])
-				  st.write(c.commentary(match['id'])
-				  st.write(c.scoreboard(match['id'])
+				  st.write(c.livescore(match['id']))
+				  st.write(c.commentary(match['id']))
+				  st.write(c.scoreboard(match['id']))
 					
 	if rr=="2":
 		a=st.number_input("Enter the Last fist color",value=1,step=1)
