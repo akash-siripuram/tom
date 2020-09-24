@@ -11,6 +11,10 @@ from sklearn.tree import DecisionTreeClassifier
 import sklearn
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import LogisticRegression
+from pycricbuzz import Cricbuzz
+c=Cricbuzz()
+matches=c.matches()
+			   
 a_type=st.selectbox("Type",["LR","DT","ADABOOST [Recommended]","SVM"])
 #st.write("The shape is ",d.shape)
 #cl=st.selectbox("Select the number of clusters",[2,3,4,5,6,7,8,9,10])
@@ -22,31 +26,12 @@ j=1
 rr=st.radio("Select the cell",("1","2","3","4"))
 if a_type=="LR":
 	if rr=="1":
-		a=st.number_input("Enter the Last fist color",value=1,step=1)
-		b=st.number_input("Enter the Last second",value=1,step=1)
-		c=st.number_input("Enter the last third color",value=1,step=1)
-		e=st.number_input("Enter the last four color",value=1,step=1)
-		if st.button("Predict 1st"):
-			with st.spinner('In Progress.'):
-				d=pd.read_excel("rd5.xlsx")
-				#clf = svm.SVC(kernel="")
-				#clf = DecisionTreeClassifier(random_state=0)
-				X=d[['A','B','C','D']]
-				y=d['Y']
-				X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.001)
-
-				#st.write("The shape is ",d.shape)
-				clf = LogisticRegression(random_state=0).fit(X, y)
-				#st.write("You selected ",s_type)
-
-				p=clf.predict([[a,b,c,e]])
-				#st.write(p)
-				if p%2==0:
-					#r=r+1
-					st.success("Next is GREEN")
-				elif p%2==1:
-					#g=g+1
-					st.error("Next is RED")
+		for match in matches:
+			st.write(match)
+			if (match['mchstate] != "nextlive"):
+				  st.write(c.livescore(match['id'])
+				  st.write(c.commentary(match['id'])
+				  st.write(c.scoreboard(match['id'])
 					
 	if rr=="2":
 		a=st.number_input("Enter the Last fist color",value=1,step=1)
