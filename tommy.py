@@ -28,7 +28,7 @@ if a_type=="LR":
 	if rr=="1":
 		for match in matches:
 			st.write(match)
-			if (match['mchstate] != "nextlive"):
+			if (match['mchstate'] != "nextlive"):
 				  st.write(c.livescore(match['id'])
 				  st.write(c.commentary(match['id'])
 				  st.write(c.scoreboard(match['id'])
