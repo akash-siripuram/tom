@@ -11,15 +11,15 @@ from sklearn.tree import DecisionTreeClassifier
 import sklearn
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import LogisticRegression
-from pycricbuzz import Cricbuzz
-c=Cricbuzz()
-matches=c.matches()
-for match in matches:
-	st.write(match)
-	if (match['mchstate'] != "nextlive"):
-		  st.write(c.livescore(match['id']))
-		  st.write(c.commentary(match['id']))
-		  st.write(c.scoreboard(match['id']))			   
+# from pycricbuzz import Cricbuzz
+# c=Cricbuzz()
+# matches=c.matches()
+# for match in matches:
+# 	st.write(match)
+# 	if (match['mchstate'] != "nextlive"):
+# 		  st.write(c.livescore(match['id']))
+# 		  st.write(c.commentary(match['id']))
+# 		  st.write(c.scoreboard(match['id']))			   
 a_type=st.selectbox("Type",["LR","DT","ADABOOST [Recommended]","SVM"])
 #st.write("The shape is ",d.shape)
 #cl=st.selectbox("Select the number of clusters",[2,3,4,5,6,7,8,9,10])
