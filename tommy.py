@@ -187,10 +187,10 @@ elif a_type=="DT":
 			p=clf.predict([[a,b,a+1]])
 			if p==0:
 				#r=r+1
-				st.error("Next is RED")
+				st.success("Next is GREEN")
 			elif p==1:
 				#g=g+1
-				st.success("Next is GREEN")						
+				st.error("Next is RED")						
 			#if g>r:
 				#st.success("Next is GREEN - {} %".format((g/5)*100))
 			#else:
