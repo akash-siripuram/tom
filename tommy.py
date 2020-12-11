@@ -185,10 +185,10 @@ elif a_type=="DT":
 			#st.write("You selected ",s_type)
 
 			p=clf.predict([[a,b,a+1]])
-			if p==0:
+			if p==1:
 				#r=r+1
 				st.error("Next is RED")
-			elif p==1:
+			elif p==0:
 				#g=g+1
 				st.success("Next is GREEN")						
 			#if g>r:
